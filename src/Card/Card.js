@@ -69,6 +69,7 @@ function Card({
   TopLeftButton,
   BottomRightButton,
   BottomLeftButton,
+  TopBar = null,
   enableLeftStripe = false,
   LeftStripeProps = {},
   style = {},
@@ -86,8 +87,9 @@ function Card({
         }
         <div className={classes.innerRight}>
           {
-            TopRightButton && (
+            (TopRightButton || TopBar) && (
               <div className={classes.topActionBar}>
+                {TopBar}
                 <div className={classes.flex}/>
                 {TopRightButton}
               </div>
@@ -126,6 +128,7 @@ function Card({
 Card.propTypes = {
   className: TString,
   children: TNode,
+  TopBar: TObject,
   TopRightButton: TObject,
   TopLeftButton: TObject,
   BottomRightButton: TObject,

@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
-export default function createStripeCard({backgroundColor, backgroundImage, width = 5,}) {
+export default function createCardWithStripe({backgroundColor, backgroundImage, width = 5,}) {
   return function (props) {
     let style = {
       width,
