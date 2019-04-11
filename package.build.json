@@ -1,0 +1,49 @@
+{
+  "homepage": "https://github.com/tanggram/ui-react-core",
+  "name": "@tanggram/ui-react-core",
+  "version": "0.2.0",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "@material-ui/lab": "^3.0.0-alpha.30",
+    "@material-ui/styles": "^3.0.0-alpha.10",
+    "classnames": "^2.2.6",
+    "material-design-icons": "^3.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.2.0",
+    "@types/enzyme": "^3.9.1",
+    "babel-jest": "^24.1.0",
+    "cross-spawn": "^6.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
+    "mock-local-storage": "^1.1.8",
+    "react-test-renderer": "^16.8.6"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "mock-local-storage"
+  },
+  "keywords": [
+    "react",
+    "ui"
+  ],
+  "main": "index.js",
+  "module": "esm/tanggram-ui-react-core.js",
+  "private": false,
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

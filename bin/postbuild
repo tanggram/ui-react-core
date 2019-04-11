@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+ROOT_DIR="$(pwd)"
+
+cp "${ROOT_DIR}/package.build.json" "${ROOT_DIR}/build/package.json"
+
+cp "${ROOT_DIR}/LICENSE" "${ROOT_DIR}/build/LICENSE"
+
+cp "${ROOT_DIR}/README.md" "${ROOT_DIR}/build/README.md"
