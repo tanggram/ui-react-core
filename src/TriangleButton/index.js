@@ -65,6 +65,7 @@ function TriangleButton({
         className={classes.root}
         style={style}
       >
+        <div className={classes.mask}/>
         <div className={classes.triangle}>
           <Label label={label} size={size}/>
         </div>
