@@ -15,7 +15,7 @@ function Label({style={}, className = null, label = '', size = 80}) {
   const classes = useStyles({label, size});
   return (
     <Typography
-      variant={'subtitle1'}
+      variant={'body1'}
       className={className ? className : classes.root}
       style={style}
     >
