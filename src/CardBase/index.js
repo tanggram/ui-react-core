@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   },
 });
 
-function BlockCard({
+function CardBase({
   className,
   style = {},
   children,
@@ -22,8 +22,8 @@ function BlockCard({
   );
 }
 
-BlockCard.propTypes = {
+CardBase.propTypes = {
   children: TNode,
 };
 
-export default BlockCard;
+export default CardBase;
