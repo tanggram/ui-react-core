@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+ROOT_DIR="$(pwd)"
+
+rm -rf "${ROOT_DIR}/build"
+
+mkdir -p "${ROOT_DIR}/build/es"
+
+cp -r "${ROOT_DIR}/src"/* "${ROOT_DIR}/build/es"

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function CarouselItem({children}) {
+function CarouselItem({children, forwardRef}) {
   return (
-    <div>
+    <div ref={forwardRef}>
       {children}
     </div>
   );
@@ -11,4 +11,6 @@ function CarouselItem({children}) {
 CarouselItem.propTypes = {
 };
 
-export default CarouselItem;
+export default React.forwardRef((props, ref) => (
+  <CarouselItem {...props} forwardRef={ref}/>
+));

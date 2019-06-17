@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {TFunction, TNumber, TObject} from '../prop_types';

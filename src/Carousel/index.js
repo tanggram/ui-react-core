@@ -1,12 +1,34 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Slide from '@material-ui/core/Slide';
 import {TArray, declareValues, TNumber} from '../prop_types';
 
-function Carousel({index, loop = 'infinite', children}) {
+function Carousel({index, loop = 'infinite', children, forwardRef}) {
   let _children = {};
   const [preIndex, setPreIndex] = useState(index);
   const [slideIn, setSlideIn] = useState(true);
   const [direction, setDirection] = useState('left');
+
+  const slideToRight = useCallback(
+    () => {
+      setSlideIn(true);
+      setDirection('right');
+    },
+    [
+      setSlideIn,
+      setDirection,
+    ]
+  );
+
+  const slideToLeft = useCallback(
+    () => {
+      setSlideIn(true);
+      setDirection('left');
+    },
+    [
+      setSlideIn,
+      setDirection,
+    ]
+  );
 
   useEffect(
     () => {
@@ -24,18 +46,16 @@ function Carousel({index, loop = 'infinite', children}) {
         }
       }
     },
-    [index, slideIn]
+    [
+      index,
+      slideIn,
+      setSlideIn,
+      preIndex,
+      setPreIndex,
+      slideToRight,
+      slideToLeft,
+    ]
   );
-
-  function slideToRight() {
-    setSlideIn(true);
-    setDirection('right');
-  }
-
-  function slideToLeft() {
-    setSlideIn(true);
-    setDirection('left');
-  }
 
   React.Children.map(children, (child, i) => {
     _children[i] = child;
@@ -43,13 +63,13 @@ function Carousel({index, loop = 'infinite', children}) {
 
   if (preIndex === index) {
     return (
-      <Slide in={slideIn} direction={direction}>
-        {_children[index]}
+      <Slide in={slideIn} direction={direction} ref={forwardRef}>
+        {_children[index] ? _children[index] : (<div/>)}
       </Slide>
     );
   } else {
     return (
-      <Slide in={slideIn} direction={direction}>
+      <Slide in={slideIn} direction={direction} ref={forwardRef}>
         <div/>
       </Slide>
     );
@@ -57,9 +77,11 @@ function Carousel({index, loop = 'infinite', children}) {
 }
 
 Carousel.propTypes = {
-  children: TArray.isRequired,
+  children: TArray,
   loop: declareValues(['infinite']),
-  index: TNumber.isRequired,
+  index: TNumber,
 };
 
-export default Carousel;
+export default React.forwardRef((props, ref) => (
+  <Carousel {...props} forwardRef={ref}/>
+));

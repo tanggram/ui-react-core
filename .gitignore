@@ -20,3 +20,4 @@ yarn-error.log*
 # others
 .idea
 .babelrc
+.size-snapshot.json

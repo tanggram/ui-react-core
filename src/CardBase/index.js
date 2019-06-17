@@ -13,10 +13,11 @@ function CardBase({
   style = {},
   children,
   raised = true,
+  forwardRef,
 }) {
   const classes = useStyles({});
   return (
-    <Card className={className ? className : classes.root} style={style} raised={raised}>
+    <Card className={className ? className : classes.root} style={style} raised={raised} ref={forwardRef}>
       {children}
     </Card>
   );
@@ -26,4 +27,6 @@ CardBase.propTypes = {
   children: TNode,
 };
 
-export default CardBase;
+export default React.forwardRef((props, ref) => (
+  <CardBase {...props} forwardRef={ref}/>
+));

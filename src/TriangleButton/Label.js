@@ -11,17 +11,26 @@ const useStyles = makeStyles({
   },
 });
 
-function Label({style={}, className = null, label = '', size = 80}) {
+function Label({
+  style={},
+  className = null,
+  label = '',
+  size = 80,
+  forwardRef,
+}) {
   const classes = useStyles({label, size});
   return (
     <Typography
       variant={'body1'}
       className={className ? className : classes.root}
       style={style}
+      ref={forwardRef}
     >
       {label}
     </Typography>
   );
 }
 
-export default Label;
+export default React.forwardRef((props, ref) => (
+  <Label {...props} forwardRef={ref}/>
+));

@@ -74,11 +74,12 @@ function Card({
   LeftStripeProps = {},
   style = {},
   raised = true,
+  forwardRef,
 }) {
   const config = useConfig();
   const classes = useStyles({config});
   return (
-    <CardBase className={className ? className : classes.root} style={style} raised={raised}>
+    <CardBase className={className ? className : classes.root} style={style} raised={raised} ref={forwardRef}>
       <div className={classes.inner}>
         {
           enableLeftStripe && (
@@ -139,4 +140,6 @@ Card.propTypes = {
   raised: TBool,
 };
 
-export default Card;
+export default React.forwardRef((props, ref) => (
+  <Card {...props} forwardRef={ref}/>
+));

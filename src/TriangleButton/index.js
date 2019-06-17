@@ -1,7 +1,14 @@
 import React from 'react';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import {makeStyles} from '@material-ui/styles';
-import {TString, TObject, TFunction, TNumber, TBool} from '../prop_types';
+import {
+  TString,
+  TObject,
+  TFunction,
+  TNumber,
+  TBool,
+  // declareTypes,
+} from '../prop_types';
 import Label from './Label';
 
 const useStyles = makeStyles({
@@ -42,6 +49,7 @@ function TriangleButton({
   onClick = () => {},
   disableRipple = false,
   colorMask = '#FFFFFF',
+  forwardRef,
 }) {
   const classes = useStyles({colorMask, colorTop, colorBottom, size});
 
@@ -83,6 +91,9 @@ TriangleButton.propTypes = {
   size: TNumber,
   onClick: TFunction,
   disableRipple: TBool,
+  // forwardRef: declareTypes([TFunction, TObject]),
 };
 
-export default TriangleButton;
+export default React.forwardRef((props, ref) => (
+  <TriangleButton {...props} forwardRef={ref}/>
+));
